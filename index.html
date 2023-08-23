@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="assets/icon.png" />
+    <title>Image2ASCII</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+  </head>
+  <body>
+    <h1>Image2ASCII</h1>
+    <input type="file" id="imageInput" accept="image/*" />
+    <div id="inputRange">
+      <label for="maxWidthInput">Size:</label>
+      <input type="range" id="maxWidthInput" min="100" max="2000" value="200" step="100" />
+      <span id="maxWidthDisplay">200</span>
+    </div>
+    <input type="checkbox" id="sharpness" />
+    <label for="sharpness">Sharpness</label>
+    <div class="loader">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div id="asciiResult" tabindex="0"></div>
+    <span id="message">* Quality depends on size © <a href="https://www.facebook.com/tducxD">DevGecko</a></span>
+    <script src="scripts/script.js"></script>
+  </body>
+</html>
