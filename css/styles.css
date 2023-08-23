@@ -1,0 +1,126 @@
+body {
+  font-family: Arial, monospace;
+  padding: 0.5rem;
+}
+a {
+  text-decoration: none;
+  color: #226cd7;
+}
+h1 {
+  white-space: nowrap;
+  margin-top: 0.5rem;
+}
+
+input[type="file"] {margin-bottom: 10px;}
+
+#asciiResult {
+  line-height: 0.9;
+  letter-spacing: 1px;
+  font-size: 8px;
+  margin-top: 2rem;
+  margin-left: -1rem;
+  font-family: monospace;
+  white-space: pre;
+  overflow-wrap: break-word;
+  text-align: justify;
+  -moz-text-align-last: center;
+       text-align-last: center;
+}
+#sharpness {
+  -webkit-transform: translateY(2px);
+      -ms-transform: translateY(2px);
+          transform: translateY(2px);
+  accent-color: #484848;
+}
+#message {
+  position: fixed;
+  font-size: 14px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.5rem;
+  display: block;
+  text-align: center;
+  background: #ededed;
+}
+
+/* Input Range */
+#maxWidthInput {
+  -webkit-transform: translateY(-3px);
+      -ms-transform: translateY(-3px);
+          transform: translateY(-3px);
+  margin: 0 0.5rem;
+}
+#inputRange {
+  width: auto;
+  margin: 10px auto;
+}
+input[type="range"] {
+  width: auto;
+  -webkit-appearance: none;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  height: 3px;
+  background: #484848;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: solid 3px #484848;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: white;
+  margin-top: -6.5px;
+  cursor: pointer;
+}
+input[type="range"]:focus {
+  outline: none;
+}
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: #484848;
+}
+
+/* Loader */
+.loader {
+  width: 50px;
+  margin: 50px auto;
+  left: 50%;
+  height: 10px;
+  display: none;
+}
+.loader span {
+  display: inline-block;
+  background: #484848;
+  width: 20%;
+  height: 100%;
+  border-radius: 100px;
+}
+.loader span:nth-of-type(1) {left: 0;}
+.loader span:nth-of-type(2) {left: 40%;}
+.loader span:nth-of-type(3) {right: 0;}
+.loader span {
+  -webkit-animation-name: loading;
+         animation-name: loading;
+  -webkit-animation-duration: 1.5s;
+         animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+         animation-iteration-count: infinite;
+  -webkit-animation-fill-mode: both;
+         animation-fill-mode: both;
+}
+.loader span:nth-of-type(2) {-webkit-animation-delay: 0.2s;animation-delay: 0.2s;}
+.loader span:nth-of-type(3) {-webkit-animation-delay: 0.4s;animation-delay: 0.4s;}
+@-webkit-keyframes loading {
+  0% {opacity: 1;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
+@keyframes loading {
+  0% {opacity: 1;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
