@@ -1,10 +1,12 @@
-# Convert Image to ASCII
-**Step 1: Upload your pictures**
+## Upload and convert image to ASCII
+With this online image converter you can upload your ipg, png, bmp and many other popular types of image.
 
-**Step 2: Choose the right size (larger is more time consuming)**
+After upload your photo will be converted into dense, consistent characters that form an overall picture.
 
-**Step 3: Turn on Sharpness to increase sharpness (if desired)**
+## Tips
+* To get the best quality, drag the Size bar up (this will take more processing time).
+* Sharpness is used to shade text, which creates depth in the image.
+* Blur to create a 5px blur.
+* Download button to redraw ASCII into an image (it will take a lot of time if the size is large).
 
-**Finally wait for the conversion process**
-# Author: [DevGecko](https://github.com/DevGecko)
-**Appreciate if you find it good**
+>Last modified January 25, 2024
