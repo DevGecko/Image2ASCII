@@ -8,12 +8,18 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
   </head>
   <body>
-    <h1>Image2ASCII
-    <div class="loader">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div></h1>
+    <h1>Image2ASCII</h1>
+    <div class="overlay"><h2>
+      <div class="loader">
+      <span>L</span>
+      <span>o</span>
+      <span>a</span>
+      <span>d</span>
+      <span>i</span>
+      <span>n</span>
+      <span>g</span>
+      </h2></div>
+    </div>
     <input type="file" id="imageInput" accept="image/*" />
     <div id="inputRange">
       <label for="maxWidthInput">Size:</label>
@@ -22,11 +28,21 @@
     </div>
     <input type="checkbox" id="sharpness" />
     <label for="sharpness">Sharpness</label>
+    <input type="checkbox" id="blur" />
+    <label for="blur">Blur</label>
     <br><button id="downloadIMG">Download</button>
     <div id="asciiResult" tabindex="0"></div>
-    <span id="message">* Quality depends on size | © <a href="https://www.facebook.com/DevGecko">DevGecko</a></span>
+    <span id="about"><span id="header">Upload and convert image to ASCII</span><p id="content">With this online image converter you can upload your ipg, png, bmp and many other popular types of image.<br><br>After upload your photo will be converted into dense, consistent characters that form an overall picture.</p>
+    <span id="header">Tips</span>
+    <ul id="content">
+      <li>To get the best quality, drag the Size bar up (this will take more processing time).</li>
+      <li>Sharpness is used to shade text, which creates depth in the image.</li>
+      <li>Blur to create a 5px blur.</li>
+      <li>Download button to redraw ASCII into an image (it will take a lot of time if the size is large).</li>
+    </ul>
+    </span>
+    <span id="message">Copyright © 2023 by <a href="https://www.facebook.com/DevGecko">DevGecko</a></span>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="scripts/script.js"></script>
   </body>
   </html>
-      
