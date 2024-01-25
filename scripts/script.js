@@ -2,10 +2,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var asciiDisplay = document.getElementById("asciiResult");
   var downloadIMG = document.getElementById("downloadIMG");
-  var loader = document.getElementsByClassName("loader")[0];
+  var loader = document.querySelectorAll(".loader span");
+  var overlay = document.getElementsByClassName("overlay")[0];
+  let lastspan = loader.length - 1;
   var maxWidthInput = document.getElementById("maxWidthInput");
   var sharpness = document.getElementById("sharpness");
+  var blurText = document.getElementById("blur");
   const message = document.getElementById("message");
+  const about = document.getElementById("about");
   const imageInput = document.getElementById("imageInput")
   let downloadCheck = false;
 
@@ -19,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
     canvas.height = img.height * scale * 1.6;
     const context = canvas.getContext("2d");
     context.drawImage(img, 0, 0, canvas.width, canvas.height);
-    loader.style.display = "none";
     downloadIMG.style.display = "block";
     let asciiResult = "";
     let asciiCharacters = ["@", "#", "&", "%", "?", "*", "+", ";", ":", ",", ".", " "];
@@ -32,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       asciiResult += "\n";
     }
+    overlay.style.display = "none";
     return asciiResult;
   }
 
@@ -40,13 +44,22 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   imageInput.addEventListener("change", function (event) {
-    loader.style.display = "block";
+    overlay.style.display = "flex";
+    loader.forEach(span => {
+      span.style.animationName = "loading";        
+});
     downloadIMG.style.display = "none";
     let file = event.target.files[0];
     asciiDisplay.innerText = "";
     if (!file) {
-      loader.style.display = "none";
+      overlay.style.display = "none";
+      loader.forEach(span => {
+      span.style.animationName = "none";
+});      
+      message.style.display = "inline";
     } else {
+      message.style.display = "none";
+      about.style.display = "none";
       let img = new Image();
       let maxWidth = parseInt(maxWidthInput.value);
       updateMaxWidthDisplay(maxWidth);
@@ -57,14 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
       img.src = URL.createObjectURL(file);
     }
   });
-
-  imageInput.addEventListener("change", () => {
-    if (imageInput.files && imageInput.files[0]) {
-      message.style.display = "none";
-    } else {
-      message.style.display = "inline";
-    }
-  });
   
   maxWidthInput.addEventListener("input", function (event) {
     let maxWidth = parseInt(event.target.value);
@@ -72,7 +77,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let fileInput = imageInput;
     if (fileInput.files.length > 0) {
       asciiDisplay.innerText = "";
-      loader.style.display = "block";
+      overlay.style.display = "flex";
+      loader.forEach(span => {
+        span.style.animationName = "loading";
+});
       downloadIMG.style.display = "none";
       let img = new Image();
       img.onload = function () {
@@ -100,13 +108,23 @@ document.addEventListener("DOMContentLoaded", function () {
       asciiDisplay.style.textShadow = "none";
     }
   });
+  blurText.addEventListener("change", function () {
+    if (blurText.checked) {
+      asciiDisplay.style.filter = "blur(5px)"
+    } else {
+      asciiDisplay.style.filter = "blur(0px)"
+    }
+  });
 
 downloadIMG.addEventListener("click", function () {
   var warning = confirm("It will take a lot of resources and time if the size is too large!");
   if (warning) { downloadCheck = true } else { downloadCheck = false}
   if (downloadCheck) {
     downloadCheck = false;
-    loader.style.display = "block";
+    overlay.style.display = "flex";
+    loader.forEach(span => {
+    span.style.animationName = "loading";
+});
     var nameImage = imageInput.files[0].name;
     html2canvas(document.getElementById("asciiResult")).then(canvas => {
       var imgData = canvas.toDataURL("image/jpeg");
@@ -117,7 +135,10 @@ downloadIMG.addEventListener("click", function () {
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-      loader.style.display = "none";
+      overlay.style.display = "none";
+      loader.forEach(span => {   
+      span.style.animationName = "none";
+});
     });
     setTimeout(function() {
       downloadCheck = true;
@@ -126,4 +147,3 @@ downloadIMG.addEventListener("click", function () {
 });
 
 });
-                           
